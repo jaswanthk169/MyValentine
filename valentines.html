@@ -8,9 +8,10 @@
 <style>
 * {
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: Arial, sans-serif;
 }
 
+/* Background Container */
 body {
   margin: 0;
   height: 100vh;
@@ -21,14 +22,21 @@ body {
   position: relative;
 }
 
-/* Blurry Background Image */
-body::before {
-  content: "";
-  position: absolute;
+/* Background Image + Blur */
+.background {
+  position: fixed;
   inset: 0;
-  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
-              url('IMG_20250816_111955.jpg') no-repeat center center/cover;
+  background: url("herphoto.jpg") no-repeat center center/cover;
   filter: blur(10px);
+  transform: scale(1.1);
+  z-index: -2;
+}
+
+/* Dark Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
   z-index: -1;
 }
 
@@ -118,6 +126,9 @@ button {
 
 <body>
 
+<div class="background"></div>
+<div class="overlay"></div>
+
 <div class="card" id="card"></div>
 
 <script>
@@ -158,7 +169,7 @@ function yesPage() {
     <div class="success">
       💖 YAYYYY 💖<br><br>
       HAPPY VALENTINE'S DAY NANA ❤️<br>
-
+    
       <span class="small-text">
       Manuuuuuuluuuu You are my Valentine forever 🥰.<br>
       Love you so much Nanaaaaluuu 🤗.<br>
