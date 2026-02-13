@@ -1,167 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Be My Valentine 💖</title>
-  <style>
-    * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be My Valentine 💖</title>
 
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at top, #ffdde1, #ee9ca7);
-      overflow: hidden;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
 
-    .card {
-      background: linear-gradient(180deg, #ffffff, #fff0f5);
-      padding: 40px 30px;
-      border-radius: 24px;
-      text-align: center;
-      width: 360px;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.25);
-      animation: popIn 0.7s ease;
-    }
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
 
-    @keyframes popIn {
-      from { transform: scale(0.85); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+/* Blurry Background Image */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+              url('herphoto.jpg') no-repeat center center/cover;
+  filter: blur(10px);
+  z-index: -1;
+}
 
-    h1 {
-      color: #ff4d6d;
-      margin-bottom: 14px;
-      font-size: 26px;
-    }
+/* Card */
+.card {
+  background: linear-gradient(180deg, #ffffff, #fff0f5);
+  padding: 40px 30px;
+  border-radius: 24px;
+  text-align: center;
+  width: 360px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+  animation: popIn 0.7s ease;
+}
 
-    p {
-      color: #555;
-      margin-bottom: 28px;
-      font-size: 16px;
-    }
+@keyframes popIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
 
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-    }
+h1 {
+  color: #ff4d6d;
+  margin-bottom: 14px;
+  font-size: 26px;
+}
 
-    button {
-      border: none;
-      padding: 14px 26px;
-      font-size: 16px;
-      border-radius: 40px;
-      cursor: pointer;
-      transition: 0.25s ease;
-    }
+p {
+  color: #555;
+  margin-bottom: 28px;
+  font-size: 16px;
+}
 
-    .yes {
-      background: linear-gradient(135deg, #ff4d6d, #ff758f);
-      color: white;
-      box-shadow: 0 10px 20px rgba(255,77,109,0.4);
-    }
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
 
-    .yes:hover { transform: scale(1.1); }
+button {
+  border: none;
+  padding: 14px 26px;
+  font-size: 16px;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
 
-    .no {
-      background: #eee;
-      color: #333;
-    }
+.yes {
+  background: linear-gradient(135deg, #ff4d6d, #ff758f);
+  color: white;
+  box-shadow: 0 10px 20px rgba(255,77,109,0.4);
+}
 
-    .success {
-      font-size: 22px;
-      color: #ff4d6d;
-      font-weight: bold;
-    }
+.yes:hover {
+  transform: scale(1.1);
+}
 
-    /* Smaller romantic lines */
-    .small-text {
-      font-size: 16px;
-      color: #ff4d6d;
-      font-weight: normal;
-      font-style: italic;
-    }
+.no {
+  background: #eee;
+  color: #333;
+}
 
-    .heart {
-      position: absolute;
-      font-size: 22px;
-      animation: float 3s linear infinite;
-      opacity: 0.8;
-    }
+.success {
+  font-size: 22px;
+  color: #ff4d6d;
+  font-weight: bold;
+}
 
-    @keyframes float {
-      0% { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(-600px); opacity: 0; }
-    }
-  </style>
+.small-text {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+/* Floating Hearts */
+.heart {
+  position: absolute;
+  font-size: 22px;
+  animation: float 3s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-600px); opacity: 0; }
+}
+</style>
 </head>
+
 <body>
 
-  <div class="card" id="card"></div>
+<div class="card" id="card"></div>
 
-  <script>
-    const card = document.getElementById('card');
+<script>
+const card = document.getElementById('card');
 
-    function startPage() {
-      card.innerHTML = `
-        <h1>Hey Love 💕</h1>
-        <p>Will you be my Valentine Pottii Pilla 🫣😁?</p>
-        <div class="buttons">
-          <button class="yes" onclick="yesPage()">Yes 💖</button>
-          <button class="no" onclick="pageTwo()">No 😭</button>
-        </div>`;
-    }
+function startPage() {
+  card.innerHTML = `
+    <h1>Hey Love 💕</h1>
+    <p>Will you be my Valentine Pottii Pilla 🫣😁?</p>
+    <div class="buttons">
+      <button class="yes" onclick="yesPage()">Yes 💖</button>
+      <button class="no" onclick="pageTwo()">No 😭</button>
+    </div>`;
+}
 
-    function pageTwo() {
-      card.innerHTML = `
-        <h1>🥺</h1>
-        <p>Pleachhhhh Manuuu Click on yes</p>
-        <div class="buttons">
-          <button class="yes" onclick="yesPage()">Yes 💖</button>
-          <button class="no" onclick="pageThree()">No 😭</button>
-        </div>`;
-    }
+function pageTwo() {
+  card.innerHTML = `
+    <h1>🥺</h1>
+    <p>Pleachhhhh Manuuu Click on yes</p>
+    <div class="buttons">
+      <button class="yes" onclick="yesPage()">Yes 💖</button>
+      <button class="no" onclick="pageThree()">No 😭</button>
+    </div>`;
+}
 
-    function pageThree() {
-      card.innerHTML = `
-        <h1>😢</h1>
-        <p>Manuuu Pls be my Valentine</p>
-        <div class="buttons">
-          <button class="yes" onclick="yesPage()">Yes 💖</button>
-          <button class="yes" onclick="yesPage()">Yes my dear 💕</button>
-        </div>`;
-    }
+function pageThree() {
+  card.innerHTML = `
+    <h1>😢</h1>
+    <p>Manuuu Pls be my Valentine</p>
+    <div class="buttons">
+      <button class="yes" onclick="yesPage()">Yes 💖</button>
+      <button class="yes" onclick="yesPage()">Yes my dear 💕</button>
+    </div>`;
+}
 
-    function yesPage() {
-      card.innerHTML = `
-        <div class="success">
-          💖 YAYYYY 💖<br><br>
-          HAPPY VALENTINE'S DAY NANA ❤️<br>
-          <span class="small-text">
-          Manuuuuuuluuuu You are my Valentine forever 🥰.<br>
-          Love you so much Nanaaaaluuu 🤗.<br>
-          I will be there with you for my lifetime 🫂.
-          </span>
-        </div>`;
-      for (let i = 0; i < 40; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.innerHTML = Math.random() > 0.5 ? '💗' : '💖';
-        heart.style.left = Math.random() * window.innerWidth + 'px';
-        heart.style.bottom = '-20px';
-        heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 3000);
-      }
-    }
+function yesPage() {
+  card.innerHTML = `
+    <div class="success">
+      💖 YAYYYY 💖<br><br>
+      HAPPY VALENTINE'S DAY NANA ❤️<br>
 
-    startPage();
-  </script>
+      <span class="small-text">
+      Manuuuuuuluuuu You are my Valentine forever 🥰.<br>
+      Love you so much Nanaaaaluuu 🤗.<br>
+      I will be there with you for my lifetime 🫂.
+      </span>
+    </div>`;
+
+  for (let i = 0; i < 40; i++) {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerHTML = Math.random() > 0.5 ? '💗' : '💖';
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.bottom = '-20px';
+    heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 3000);
+  }
+}
+
+startPage();
+</script>
 
 </body>
 </html>
-    
